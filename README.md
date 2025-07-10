@@ -12,53 +12,93 @@ composer require amdadulshakib/cmsaddoncommands
 
 ## Usage
 
-All commands are available via Artisan. Replace `CMSAuth` with your Addon name and `Test`/`Test2` with your desired class name.
+All commands are available via Artisan. Replace `{AddonName}` with your Addon name and `{ClassName}` with your desired class name.
 
-### 1. Create a Model (with optional migration)
+### 1. Create a New Addon
 
+**Command:**
+```
+php artisan make:addon {AddonName}
+```
+**Example:**
+```
+php artisan make:addon Blog
+```
+
+---
+
+### 2. Create a Model (with optional migration)
+
+**Command:**
 ```
 php artisan addon:model {AddonName} {ModelName}
 ```
-
-Add `-m` to generate a migration as well:
-
+**With migration:**
 ```
 php artisan addon:model {AddonName} {ModelName} -m
 ```
-
-### Example:
-
+**Example:**
 ```
-php artisan addon:model CMSAuth Test
+php artisan addon:model Blog Post -m
 ```
 
-### 2. Create a Controller
+---
 
-```
-php artisan addon:controller CMSAuth TestController
-```
+### 3. Create a Controller
 
-### 3. Create a Migration
-
+**Command:**
 ```
-php artisan addon:migration CMSAuth create_test_table
+php artisan addon:controller {AddonName} {ControllerName}
 ```
-
-### 4. Run Addon Migrations
-
+**Example:**
 ```
-php artisan addon:migrate CMSAuth
+php artisan addon:controller Blog PostController
 ```
 
-### 5. Rollback Addon Migrations
+---
 
+### 4. Create a Migration
+
+**Command:**
 ```
-php artisan addon:migrate:rollback CMSAuth
+php artisan addon:migration {AddonName} {MigrationName}
 ```
+**Example:**
+```
+php artisan addon:migration Blog create_posts_table
+```
+
+---
+
+### 5. Run Addon Migrations
+
+**Command:**
+```
+php artisan addon:migrate {AddonName}
+```
+**Example:**
+```
+php artisan addon:migrate Blog
+```
+
+---
+
+### 6. Rollback Addon Migrations
+
+**Command:**
+```
+php artisan addon:migrate:rollback {AddonName}
+```
+**Example:**
+```
+php artisan addon:migrate:rollback Blog
+```
+
+---
 
 ## Notes
 
-- All generated files will be placed inside your Addon's folder (e.g., `app/Addons/CMSAuth/Models/`, `Controllers/`, `database/migrations/`).
+- All generated files will be placed inside your Addon's folder (e.g., `addons/Blog/Models/`, `Controllers/`, `Migrations/`, `Views/`).
 - These commands are intended for developer use only. You can remove the package after development if you want to keep your production environment clean.
 
 ## License

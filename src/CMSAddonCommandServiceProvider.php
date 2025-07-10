@@ -8,6 +8,7 @@ use CMSAddonCommands\Commands\MakeAddonMigrate;
 use CMSAddonCommands\Commands\MakeAddonMigrateRollback;
 use CMSAddonCommands\Commands\MakeAddonMigration;
 use CMSAddonCommands\Commands\MakeAddonModel;
+use CMSAddonCommands\Commands\MakeAddon;
 
 class CMSAddonCommandServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,7 @@ class CMSAddonCommandServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands([
+            MakeAddon::class,
             MakeAddonController::class,
             MakeAddonMigrate::class,
             MakeAddonMigrateRollback::class,
