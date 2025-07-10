@@ -14,7 +14,7 @@ class MakeAddon extends Command
     {
         $name = $this->argument('name');
         $filesystem = new Filesystem();
-        $addonPath = base_path('addons/' . $name);
+        $addonPath = base_path('app/addons/' . $name);
 
         if ($filesystem->exists($addonPath)) {
             $this->error('Addon already exists!');
