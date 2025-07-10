@@ -26,8 +26,9 @@ class MakeAddon extends Command
         // Create subdirectories (Controllers, Models, Migrations, etc.)
         $filesystem->makeDirectory($addonPath . '/Controllers', 0755, true);
         $filesystem->makeDirectory($addonPath . '/Models', 0755, true);
-        $filesystem->makeDirectory($addonPath . '/Migrations', 0755, true);
-        $filesystem->makeDirectory($addonPath . '/Views', 0755, true);
+        $filesystem->makeDirectory($addonPath . '/database/migrations', 0755, true);
+        $filesystem->makeDirectory($addonPath . '/routes', 0755, true);
+        $filesystem->makeDirectory($addonPath . '/views', 0755, true);
 
         // Optionally, create a basic addon.json or config file
         $filesystem->put($addonPath . '/addon.json', json_encode(['name' => $name, 'created_at' => now()], JSON_PRETTY_PRINT));
