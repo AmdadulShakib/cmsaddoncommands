@@ -8,7 +8,7 @@ use CMSAddonCommands\Commands\MakeAddonMigrate;
 use CMSAddonCommands\Commands\MakeAddonMigrateRollback;
 use CMSAddonCommands\Commands\MakeAddonMigration;
 use CMSAddonCommands\Commands\MakeAddonModel;
-use CMSAddonCommands\Commands\MakeAddon;
+*****use CMSAddonCommands\Commands\MakeAddon;
 
 class CMSAddonCommandServiceProvider extends ServiceProvider
 {

@@ -21,12 +21,22 @@ class MakeAddonMigrate extends Command
             return 1;
         }
 
+        // Check if there are any migration files
+        $files = glob($migrationPath . '/*.php');
+        if (empty($files)) {
+            $this->info("No migration files found for Addon: {$addon}");
+            return 0;
+        }
+
+        $relativePath = str_replace(base_path() . DIRECTORY_SEPARATOR, '', $migrationPath);
+        $relativePath = str_replace('\\', '/', $relativePath); // Ensure forward slashes for Laravel
+
         $this->call('migrate', [
-            '--path' => str_replace(base_path() . '/', '', $migrationPath),
+            '--path' => $relativePath,
             '--force' => true,
         ]);
+
         $this->info("Addon migrations run for: {$addon}");
         return 0;
     }
 }
-
